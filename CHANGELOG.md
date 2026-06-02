@@ -9,6 +9,24 @@ Starting with `2026.5.13`, this project uses calendar versioning in `YYYY.M.D` f
 
 No unreleased changes.
 
+## [2026.6.2] - 2026-06-02
+
+> Full-kit accuracy audit. Reviewed every component of AG Kit — all 45 skills, 20 agents, 13 workflows, the GEMINI.md rules, and both overview docs — against verified 2026 facts (OWASP Top 10:2025, MCP spec 2025-06-18, Rust 2024 edition, Node 24 LTS). Removed dead references, fabricated numbers, internal contradictions, broken formatting, and stale date stamps. Also taught the CLI to surface update notifications from `ag-kit status`.
+
+### Added
+- **CLI update check on `status`**: `ag-kit status` now prints the installed CLI version and checks npm for a newer release (parallel, 1.5s timeout), showing an update banner or confirming you're current. Added `--quiet` to suppress the check in CI/CD.
+
+### Changed
+- **Remaining 36 skills audited & fixed**: corrected stale tech (Rust 1.75→2024 edition, MCP SSE/WebSocket→Streamable HTTP, PlanetScale FK support, `aioredis`→`redis.asyncio`), rewrote the vulnerability-scanner checklist to OWASP Top 10:2025, and stripped fabricated benchmarks/prices/time-estimates across brainstorming, code-review-graph, and others.
+- **20 agents & 13 workflows audited**: removed dead agent/skill references, fixed a corrupted `rust-pro` frontmatter, added missing `tools:`/`allowed-tools` fields, corrected the orchestrate agent roster to 20, and softened mandatory auto-install protocols to opt-in.
+- **ARCHITECTURE.md & AGENT_FLOW.md catalogs** now match the repository exactly: 45 skills (added `rust-pro`, `intelligent-routing`; removed 5 phantom skills like `prisma-expert`/`nestjs-expert`), 16 skill-level scripts, refreshed framework lists.
+- Bumped root, web, and cli package versions to `2026.6.2`.
+
+### Fixed
+- **Dead references** across the kit: `react-best-practices`→`nextjs-react-expert`, `api-designer`/`conversation-manager`/`refactoring-patterns` removed or repointed, two phantom scripts (`dependency_analyzer.py`, `bundle_analyzer.py`) dropped from GEMINI.md.
+- **Broken formatting**: escaped PowerShell pipes breaking Markdown tables, fixed a broken code fence in plan-writing, repaired mojibake in project-planner, and translated leftover Turkish text in GEMINI.md, mobile-design, and frontend-specialist.
+- **Stale date stamps**: removed "(2025)"/"for 2025" stamps from titles and intros across many skills and agents for evergreen docs.
+
 ## [2026.5.31] - 2026-05-31
 
 > Skill accuracy pass. Audited and upgraded the `app-builder` skill plus 8 tech skills against verified 2026 facts (Next.js 16, React 19, Node 24 LTS, Tailwind v4, Express 5). Focus: kill version drift, internal contradictions, fabricated numbers, and stale date stamps.

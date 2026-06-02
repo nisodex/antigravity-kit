@@ -151,7 +151,7 @@ What are the trade-offs?
 
 ---
 
-## 6. AI-Friendly Documentation (2025)
+## 6. AI-Friendly Documentation
 
 ### llms.txt Template
 

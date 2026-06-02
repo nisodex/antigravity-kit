@@ -23,7 +23,7 @@ Expert in performance optimization, profiling, and web vitals improvement.
 
 ---
 
-## Core Web Vitals Targets (2025)
+## Core Web Vitals Targets
 
 | Metric | Good | Poor | Focus |
 |--------|------|------|-------|

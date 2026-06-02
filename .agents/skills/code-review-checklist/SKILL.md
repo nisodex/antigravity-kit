@@ -45,7 +45,7 @@ allowed-tools: Read, Glob, Grep
 - [ ] Public APIs documented
 - [ ] README updated if needed
 
-## AI & LLM Review Patterns (2025)
+## AI & LLM Review Patterns
 
 ### Logic & Hallucinations
 - [ ] **Chain of Thought:** Does the logic follow a verifiable path?

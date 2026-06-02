@@ -42,7 +42,7 @@ allowed-tools: Read, Write, Edit, Glob, Grep, Bash
 
 | Type | Best For | Speed |
 |------|----------|-------|
-| **Unit** | Pure functions, logic | Fast (<50ms) |
+| **Unit** | Pure functions, logic | Fast (<100ms) |
 | **Integration** | API, DB, services | Medium |
 | **E2E** | Critical user flows | Slow |
 

@@ -155,8 +155,8 @@ _You must present this block to the user before code._
 
 ```
 ❌ WRONG (Generic):
-- "Renk tercihiniz var mı?"
-- "Nasıl bir tasarım istersiniz?"
+- "Do you have a color preference?"
+- "What kind of design would you like?"
 
 ✅ CORRECT (Based on context analysis):
 - "For [Sector], [Color1] or [Color2] are typical.
@@ -184,7 +184,7 @@ _You must present this block to the user before code._
 
 **AI tendencies often drive you to hide in these "popular" elements. They are now FORBIDDEN as defaults:**
 
-1. **The "Standard Hero Split"**: DO NOT default to (Left Content / Right Image/Animation). It's the most overused layout in 2025.
+1. **The "Standard Hero Split"**: DO NOT default to (Left Content / Right Image/Animation). It's an overused, predictable layout.
 2. **Bento Grids**: Use only for truly complex data. DO NOT make it the default for landing pages.
 3. **Mesh/Aurora Gradients**: Avoid floating colored blobs in the background.
 4. **Glassmorphism**: Don't mistake the blur + thin border combo for "premium"; it's an AI cliché.
@@ -508,7 +508,7 @@ Before creating a component, ask:
 ### Performance Optimization
 
 ✅ Measure before optimizing (use Profiler, DevTools)
-✅ Use Server Components by default (Next.js 14+)
+✅ Use Server Components by default (App Router)
 ✅ Implement lazy loading for heavy components/routes
 ✅ Optimize images (next/image, proper formats)
 ✅ Minimize client-side JavaScript

@@ -18,8 +18,8 @@ You are a project planning expert. You analyze user requests, break them into ta
 3.  **Check** if request is clear enough to proceed
 4.  **Auto-Integration Check (MANDATORY TOOL USE):** If `.code-review-graph/` directory is missing:
     - **Step 1:** You MUST explicitly use your terminal/bash execution tool to run `Get-Command code-review-graph` (Win) or `which code-review-graph` (Mac/Linux).
-    - **Step 2:** If the exit code is 0 (INSTALLED): You MUST use your terminal tool to run `code-review-graph build` to optimize token usage.
-    - **Step 3:** If exit code is non-zero (NOT INSTALLED) and project is > 200 files: **ASK the user** "Would you like me to run `pip install code-review-graph` to build a local map and optimize your token usage by ~8x for this project?"
+    - **Step 2:** If the exit code is 0 (INSTALLED): ask the user before running `code-review-graph build` (it scans the whole project).
+    - **Step 3:** If exit code is non-zero (NOT INSTALLED) and project is > 200 files: **ASK the user** "Would you like me to run `pip install code-review-graph` to build a local map and cut token usage for this project?"
 5.  **If unclear:** Ask 1-2 quick questions, then proceed
 
 > 🔴 **OS Rule:** Use OS-appropriate commands!
@@ -246,7 +246,7 @@ Before assigning agents, determine project type:
 ### 🔴 Step 6: Create Plan File (DYNAMIC NAMING)
 
 > 🔴 **ABSOLUTE REQUIREMENT:** Plan MUST be created before exiting PLANNING mode.
-> � **BAN:** NEVER use generic names like `plan.md`, `PLAN.md`, or `plan.dm`.
+> 🚫 **BAN:** NEVER use generic names like `plan.md`, `PLAN.md`, or `plan.dm`.
 
 **Plan Storage (For PLANNING Mode):** `{task-slug}.md` in the project root directory.
 

@@ -1,6 +1,6 @@
 ---
 name: code-review-graph
-description: Token-efficient code review using Tree-sitter AST graphs and MCP. Reduces AI assistant token usage by 6.8–49x by computing blast radius of changes instead of reading entire codebases. Uses SQLite graph database for structural analysis.
+description: Token-efficient code review using Tree-sitter AST graphs and MCP. Cuts AI token usage on large codebases by computing the blast radius of changes instead of reading entire codebases. Uses a SQLite graph database for structural analysis.
 when_to_use: "When reviewing code in large codebases (500+ files), when token costs are high, when making multi-file changes with cross-module dependencies, or when working with monorepos. Also for dead code detection, architecture visualization, and refactoring previews. NOT for small projects under 200 files with isolated single-file changes."
 allowed-tools: Read, Grep, Glob, Bash
 effort: medium
@@ -8,31 +8,29 @@ effort: medium
 
 # Code Review Graph — Token-Efficient Codebase Context via MCP
 
-> Reduce AI token usage by **6.8x average** (up to **49x** on monorepos) by giving the AI a structural map of your codebase instead of letting it read everything.
+> Cut AI token usage substantially on large codebases by giving the AI a structural map instead of letting it read everything. Savings scale with codebase size — marginal on small projects, large on monorepos.
 
 ## Overview
 
 `code-review-graph` is an MCP server that uses **Tree-sitter** to parse your codebase into an AST graph stored in **SQLite**. When your AI assistant needs context for a task, it queries the graph first — getting only the files in the **blast radius** of your change — instead of reading every file in the directory.
 
-**Token Impact:**
+**Token Impact (illustrative — varies by codebase):**
 
-| Codebase Type | Without Graph | With Graph | Reduction |
-|---------------|---------------|------------|-----------|
-| FastAPI (3K files) | 138,585 tokens | 37,217 tokens | **3.7x** |
-| httpx | 64,666 tokens | 14,090 tokens | **4.6x** |
-| Next.js monorepo (27K files) | 739,352 tokens | 15,049 tokens | **49.1x** |
-| Express.js (small) | Less benefit | Graph overhead > savings | **~1x** |
-| **Average across 6 repos** | — | — | **8.2x** |
+| Codebase Type | Pattern |
+|---------------|---------|
+| Large monorepo (10K+ files) | Biggest savings — graph reads a small fraction of files |
+| Mid-size app (1-5K files) | Meaningful reduction on multi-file changes |
+| Small project (<200 files) | Little benefit — graph overhead can exceed savings |
 
-> **Quality also improves:** Graph-assisted reviews score **8.8/10** vs **7.2/10** for naive reviews. Less noise = better signal = more accurate output.
+> **Quality angle:** scoping the AI to the blast radius reduces noise, which tends to improve review focus. Measure on your own repo rather than relying on a fixed multiplier.
 
-## 🛑 Auto-Bootstrap Protocol (MANDATORY TOOL USE For AI Agents)
+## Bootstrap Protocol (opt-in)
 
-When invoked during `/plan` or standard usage on a mid-to-large project, **proactively check** if the user can benefit from graph analysis:
-1. **Step 1:** You MUST explicitly use your terminal/bash execution tool to run a quick check: `Get-Command code-review-graph` (Windows) or `which code-review-graph` (macOS/Linux).
-2. **Step 2:** Check if `.code-review-graph/` directory exists in the workspace.
-3. **Step 3:** If the exit code is 0 (INSTALLED) but the index does not exist, **you MUST use your terminal tool to auto-execute** `code-review-graph build` to proactively optimize your token usage before reading multi-file contexts.
-4. **Step 4:** If exit code is non-zero (NOT INSTALLED) and the project is large, **proactively ask the user**: "Would you like me to run `pip install code-review-graph` to build a local map and optimize your token usage by ~8x for this project?"
+When invoked during `/plan` or standard usage on a mid-to-large project, check whether graph analysis is available before relying on it:
+1. **Step 1:** Check if the tool is installed: `Get-Command code-review-graph` (Windows) or `which code-review-graph` (macOS/Linux).
+2. **Step 2:** Check if a `.code-review-graph/` directory exists in the workspace.
+3. **Step 3:** If installed but the index is missing, ask the user before running `code-review-graph build` (it scans the whole project).
+4. **Step 4:** If not installed and the project is large, ask the user: "Would you like to `pip install code-review-graph` and build a local map to cut token usage for this project?" Never install or run build without confirmation.
 
 ---
 

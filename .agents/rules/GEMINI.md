@@ -109,7 +109,7 @@ When user's prompt is NOT in English:
 
 - **Code**: Concise, direct, no over-engineering. Self-documenting.
 - **Testing**: Mandatory. Pyramid (Unit > Int > E2E) + AAA Pattern.
-- **Performance**: Measure first. Adhere to 2025 standards (Core Web Vitals).
+- **Performance**: Measure first. Adhere to current Core Web Vitals standards.
 - **Infra/Safety**: 5-Phase Deployment. Verify secrets security.
 
 ### 📁 File Dependency Awareness
@@ -123,7 +123,7 @@ When user's prompt is NOT in English:
 ### 🗺️ System Map & Memory Read
 
 > 🔴 **MANDATORY:** At session start, you MUST read:
-> 1. `ARCHITECTURE.md` to understand Agents, Skills, and Scripts.
+> 1. `.agents/ARCHITECTURE.md` to understand Agents, Skills, and Scripts.
 > 2. `.agents/memory/MEMORY.md` to load persistent project conventions, user preferences, and decisions.
 
 **Path Awareness (Note: the project directory name is `.agents` plural):**
@@ -185,7 +185,7 @@ When user's prompt is NOT in English:
 
 ### 🏁 Final Checklist Protocol
 
-**Trigger:** When the user says "son kontrolleri yap", "final checks", "çalıştır tüm testleri", or similar phrases.
+**Trigger:** When the user says "run the final checks", "final checks", "run all the tests", or similar phrases.
 
 | Task Stage       | Command                                            | Purpose                        |
 | ---------------- | -------------------------------------------------- | ------------------------------ |
@@ -201,19 +201,17 @@ When user's prompt is NOT in English:
 - **Completion:** A task is NOT finished until `checklist.py` returns success.
 - **Reporting:** If it fails, fix the **Critical** blockers first (Security/Lint).
 
-**Available Scripts (12 total):**
+**Available Scripts (10 total):**
 
 | Script                     | Skill                 | When to Use         |
 | -------------------------- | --------------------- | ------------------- |
 | `security_scan.py`         | vulnerability-scanner | Always on deploy    |
-| `dependency_analyzer.py`   | vulnerability-scanner | Weekly / Deploy     |
 | `lint_runner.py`           | lint-and-validate     | Every code change   |
 | `test_runner.py`           | testing-patterns      | After logic change  |
 | `schema_validator.py`      | database-design       | After DB change     |
 | `ux_audit.py`              | frontend-design       | After UI change     |
 | `accessibility_checker.py` | frontend-design       | After UI change     |
 | `seo_checker.py`           | seo-fundamentals      | After page change   |
-| `bundle_analyzer.py`       | performance-profiling | Before deploy       |
 | `mobile_audit.py`          | mobile-design         | After mobile change |
 | `lighthouse_audit.py`      | performance-profiling | Before deploy       |
 | `playwright_runner.py`     | webapp-testing        | Before deploy       |
@@ -269,7 +267,7 @@ When user's prompt is NOT in English:
 ### Key Scripts
 
 - **Verify**: `.agents/scripts/verify_all.py`, `.agents/scripts/checklist.py`
-- **Scanners**: `security_scan.py`, `dependency_analyzer.py`
+- **Scanners**: `security_scan.py`
 - **Audits**: `ux_audit.py`, `mobile_audit.py`, `lighthouse_audit.py`, `seo_checker.py`
 - **Test**: `playwright_runner.py`, `test_runner.py`
 

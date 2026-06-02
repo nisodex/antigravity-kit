@@ -276,7 +276,11 @@ const statusCommand = async (options) => {
     const targetDir = path.resolve(options.path || process.cwd());
     const agentDir = path.join(targetDir, AGENT_FOLDER);
 
+    // Kick off the update check in parallel with local fs work
+    const updatePromise = checkUpdate(options.quiet);
+
     console.log(chalk.blueBright("\nAntigravity Kit Status\n"));
+    console.log(`CLI version: ${chalk.cyan(pkg.version)}`);
 
     if (await fse.pathExists(agentDir)) {
         const stats = await fse.stat(agentDir);
@@ -291,6 +295,14 @@ const statusCommand = async (options) => {
     } else {
         console.log(chalk.red("[X] Not installed"));
         console.log(chalk.yellow(`Run ${chalk.cyan("ag-kit init")} to install.\n`));
+    }
+
+    // Show update notification if a newer version is available
+    const latestVersion = await updatePromise;
+    if (latestVersion) {
+        showUpdateNotification(latestVersion);
+    } else if (!options.quiet) {
+        console.log(chalk.green("[OK] You are on the latest version.\n"));
     }
 };
 
@@ -326,8 +338,9 @@ program
 
 program
     .command("status")
-    .description("Check installation status")
+    .description("Check installation status and check for updates")
     .option("-p, --path <dir>", "Path to the project directory", process.cwd())
+    .option("-q, --quiet", "Suppress update check (for CI/CD)", false)
     .action(statusCommand);
 
 program.parse(process.argv);

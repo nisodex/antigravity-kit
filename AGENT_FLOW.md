@@ -1,6 +1,6 @@
 # 🔄 Agent Flow Architecture
 
-> **AG Kit 2026.5.25** — Comprehensive AI Agent Workflow Documentation
+> **AG Kit 2026.5.31** — Comprehensive AI Agent Workflow Documentation
 
 ---
 
@@ -150,25 +150,24 @@ Request Domain → Agent Mapping:
 ┌──────────────────────┬─────────────────────┬──────────────────────────┐
 │ Domain               │ Primary Agent       │ Skills Loaded            │
 ├──────────────────────┼─────────────────────┼──────────────────────────┤
-│ UI/UX Design         │ frontend-specialist │ react-best-practices      │
+│ UI/UX Design         │ frontend-specialist │ nextjs-react-expert      │
 │                      │                     │ frontend-design          │
 │                      │                     │ tailwind-patterns        │
 |                      │                     │ web-design-guidelines    │
-│                      │                     │ frontend-design          │
+│                      │                     │ lint-and-validate        │
 ├──────────────────────┼─────────────────────┼──────────────────────────┤
 │ API Development      │ backend-specialist  │ api-patterns             │
 │                      │                     │ nodejs-best-practices    │
-│                      │                     │ nestjs-expert            │
+│                      │                     │ python-patterns          │
 ├──────────────────────┼─────────────────────┼──────────────────────────┤
 │ Database Design      │ database-architect  │ database-design          │
-│                      │                     │ prisma-expert            │
 ├──────────────────────┼─────────────────────┼──────────────────────────┤
 │ Mobile App           │ mobile-developer    │ mobile-design            │
 ├──────────────────────┼─────────────────────┼──────────────────────────┤
 │ Game Development     │ game-developer      │ game-development         │
 ├──────────────────────┼─────────────────────┼──────────────────────────┤
-│ DevOps/Deployment    │ devops-engineer     │ docker-expert            │
-│                      │                     │ deployment-procedures    │
+│ DevOps/Deployment    │ devops-engineer     │ deployment-procedures    │
+│                      │                     │ server-management        │
 ├──────────────────────┼─────────────────────┼──────────────────────────┤
 │ Security Audit       │ security-auditor    │ vulnerability-scanner    │
 ├──────────────────────┼─────────────────────┼──────────────────────────┤
@@ -454,11 +453,11 @@ User Request: "Build a Next.js dashboard with authentication"
 
 4. AGENT ASSIGNMENT
    ├─ frontend-specialist
-   │   └─ Skills: react-best-practices, tailwind-patterns, frontend-design
+   │   └─ Skills: nextjs-react-expert, tailwind-patterns, frontend-design
    ├─ backend-specialist
    │   └─ Skills: api-patterns, nodejs-best-practices
    ├─ database-architect
-   │   └─ Skills: database-design, prisma-expert
+   │   └─ Skills: database-design
    └─ test-engineer
        └─ Skills: testing-patterns, webapp-testing
 
@@ -520,14 +519,13 @@ User Request: "Build a Next.js dashboard with authentication"
 │                    SYSTEM CAPABILITIES                    │
 ├──────────────────────────────────────────────────────────┤
 │ Total Agents:              20                            │
-│ Total Skills:              45 (+8 new in 2026.5.25)      │
-│ Total Workflows:           13 (+3 new in 2026.5.25)      │
+│ Total Skills:              45                            │
+│ Total Workflows:           13                            │
 │ Master Scripts:            2 (checklist, verify_all)     │
-│ Skill-Level Scripts:       18                            │
+│ Skill-Level Scripts:       16                            │
 │ Coverage:                  ~95% web/mobile + orchestration│
-│ Token Efficiency:          13-33% better (2026.5.25)     │
 │                                                          │
-│ New in 2026.5.25:                                        │
+│ Orchestration & Memory:                                  │
 │ ├─ Coordinator Mode (parallel orchestration)             │
 │ ├─ Persistent Memory System (MEMORY.md)                  │
 │ ├─ Context Compression (auto-compact)                    │
@@ -535,10 +533,10 @@ User Request: "Build a Next.js dashboard with authentication"
 │ └─ Verification by Execution (/verify)                   │
 │                                                          │
 │ Supported Frameworks:                                    │
-│ ├─ Frontend: React, Next.js, Vue, Nuxt, Astro          │
-│ ├─ Backend: Node.js, NestJS, FastAPI, Express          │
+│ ├─ Frontend: React 19, Next.js 16, Vue, Nuxt 4, Astro 6 │
+│ ├─ Backend: Node.js 24, FastAPI, Express 5, Rust        │
 │ ├─ Mobile: React Native, Flutter                        │
-│ ├─ Database: Prisma, TypeORM, Sequelize                │
+│ ├─ Database: Prisma, Drizzle, PostgreSQL                │
 │ ├─ Testing: Jest, Vitest, Playwright, Cypress          │
 │ └─ DevOps: Docker, Vercel, AWS, GitHub Actions         │
 └──────────────────────────────────────────────────────────┘
@@ -599,5 +597,5 @@ User Request: "Build a Next.js dashboard with authentication"
 
 ---
 
-**Last Updated**: 2026-05-25
-**Version**: 2026.5.25
+**Last Updated**: 2026-05-31
+**Version**: 2026.5.31

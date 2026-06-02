@@ -82,7 +82,7 @@ Do you approve? (Y/N)
 
 > ✅ After user approval, invoke multiple agents in PARALLEL.
 
-## Available Agents (17 total)
+## Available Agents (20 total)
 
 | Agent | Domain | Use When |
 |-------|--------|----------|
@@ -94,6 +94,7 @@ Do you approve? (Y/N)
 | `security-auditor` | Security | Vulnerabilities, Auth |
 | `penetration-tester` | Security | Active testing |
 | `test-engineer` | Testing | Unit, E2E, Coverage |
+| `qa-automation-engineer` | QA | E2E pipelines, test automation |
 | `devops-engineer` | Ops | CI/CD, Docker, Deploy |
 | `mobile-developer` | Mobile | React Native, Flutter |
 | `performance-optimizer` | Speed | Lighthouse, Profiling |
@@ -101,6 +102,9 @@ Do you approve? (Y/N)
 | `documentation-writer` | Docs | README, API docs |
 | `debugger` | Debug | Error analysis |
 | `game-developer` | Games | Unity, Godot |
+| `code-archaeologist` | Legacy | Refactoring, legacy code |
+| `product-manager` | Product | Requirements, user stories |
+| `product-owner` | Product | Backlog, MVP, strategy |
 | `orchestrator` | Meta | Coordination |
 
 ---
